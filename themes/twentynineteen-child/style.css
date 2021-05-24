@@ -1,0 +1,43 @@
+/*
+ Theme Name:   Twenty Nineteen Child
+ Theme URI:    https://rabuttsurwa.netlify.app/
+ Description:  Thème enfant que je construis, venant de son thème parent: twentynineteen
+ Author:       Gilbert Rabut Tsurwa
+ Author URI:   https://rabuttsurwa.netlify.app/
+ Template:     twentynineteen
+ Version:      1.0.1
+ License:      GNU General Public License v2 or later
+ License URI:  http://www.gnu.org/licenses/gpl-2.0.html
+ Tags:         light, dark, two-columns, right-sidebar, responsive-layout, accessibility-ready
+ Text Domain:  twentynineteenchild
+*/
+
+body {
+  color: bisque;
+  background-color: lightseagreen;
+  display: grid;
+}
+
+/* NOTE: Les styles pour le metadata pour un poste singulier (juste dessous le titre du poste) */
+
+.entry .entry-meta span {
+  color: bisque;
+  border-bottom: 2px solid transparent;
+  transition: all 0.25s ease-in;
+}
+
+.entry .entry-meta > span:hover {
+  border-bottom: 2px solid currentColor;
+}
+
+.entry .entry-meta a:hover {
+  color: unset;
+}
+
+/* NOTE: Ajouter les nouvelles styles en accedant à la classe .category-vapourwave */
+.category-vapourwave .entry-header .entry-title {
+  color: transparent;
+  background-image: linear-gradient(to bottom right, bisque, lightcoral);
+  -webkit-background-clip: text;
+  background-clip: text;
+}
