@@ -1,9 +1,12 @@
-## Ce que l'on a appris
+## Ce que j'ai appris
 - en gros, l'objectif c'était faire WordPress inclure nos fichiers CSS enfant et parent, comme approprié 
 - on s'est abordé la surface des actions en WordPress
 - on a brièvement étudié la fonction important: ```wp_enqueue_scripts()```
 - modifier les styles existants
-- créer les nouvelles styles, en accedant à un élément par son categorie par exemple
+  - pour modifier les styles existantes, le meilleur moyen c'est de copier les styles, aussi que la selecteur, de l'inspecteur; que c'est soit chrome, firefox etc.
+  - coller les styles ici (vscode ou là où que l'on utilise), et les modifier comme desiré  
+- créer les nouvelles styles, en crééant une nouvelle selecteur qui va cibler notre élément
+  - sur WordPress, c'est processus est un peu compliqué, mais rien de trop difficile. il me faut juste y habituer
   
 <br>
 
@@ -14,6 +17,6 @@
 <br>
 
 **Qq'chose important à remarquer:**
-- Mes styles css ne se rendait pas à WordPress à cause des complications des caches. 
-- When I do a hard refresh, instead of the normal refresh, I can see my styles getting applied.
-- The solution was to do a hard refresh, pour que WordPress peut démarrer avec une nouvelle cache vide
+- Au debut, mes styles css ne se rendait pas à WordPress à cause des complications des caches. 
+- Mais, when I do a hard refresh, instead of the normal refresh, I can see my styles getting applied.
+- Alors, The solution was to do a hard refresh, pour que WordPress peut démarrer avec une nouvelle cache vide

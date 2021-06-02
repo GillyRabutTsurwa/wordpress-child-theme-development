@@ -12,6 +12,8 @@
  Text Domain:  twentynineteenchild
 */
 
+/* NEWNOTE: j'ai pas fait la réinitialisation globale. avec WordPress, ça dérange tout */
+
 body {
   color: bisque;
   background-color: lightseagreen;
@@ -19,20 +21,26 @@ body {
 }
 
 /* NOTE: Les styles pour le metadata pour un poste singulier (juste dessous le titre du poste) */
+/* NEW: j'ai ajouter les mêmes styles pour le metadata pour la liste des postes */
 
-.entry .entry-meta span {
+.entry .entry-meta span,
+.entry .entry-footer span {
   color: bisque;
   border-bottom: 2px solid transparent;
   transition: all 0.25s ease-in;
 }
 
-.entry .entry-meta > span:hover {
+.entry .entry-meta > span:hover,
+.entry .entry-footer > span:hover {
   border-bottom: 2px solid currentColor;
 }
 
-.entry .entry-meta a:hover {
+.entry .entry-meta a:hover,
+.entry .entry-footer a:hover {
   color: unset;
 }
+
+/* ================================================================================================== */
 
 /* NOTE: Ajouter les nouvelles styles en accedant à la classe .category-vapourwave */
 .category-vapourwave .entry-header .entry-title {
