@@ -12,5 +12,3 @@ To summarise, I learnt about 3 important subjects: [hooks][wordpress-hooks-link]
 - wrote code for an action that removes the parent functionality that displays widgets at the footer of each post
   - also importantly, i learnt that you need to add an action in order to remove it
   - removing the action is done in our custom function, but in order to call that custom function (responsible for removing the action), we need to add an action, using an appropriate action hook
-
-<!-- NOTES DONE: commit changes after walk -->
