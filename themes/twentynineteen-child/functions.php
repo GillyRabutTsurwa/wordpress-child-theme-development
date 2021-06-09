@@ -26,38 +26,49 @@ function twentynineteen_the_posts_navigation() {
     );
 }
  
-// NEW: 
-
-/**
- * NOTE:
- * this function is responsible for posts; only those that have the category francais
- * and prepends the string "Francais: " to what is already in the title
- * this new string value has to be returned so that it can be used in the filter hook
- * this value will replace the original value
- */
 function custom_french_titles($title, $id = null) {
     if (in_category("francais", $id)) $title = "Français: ". $title;
-    // IMPORTANTNOTE: souviens-toi qu'une fonction qui gère un filtre doit toujours renvoyer une valeur
     return $title;
 }
 
-/**
- * NOTE:
- * now, i use add_filter(), to run our custom_french_titles() whenever the_title filter hook is applied
- * whenever wordpress is printing post titles throughout our site, our function will run, and the post title will be modified as necessaryf
- */
 add_filter("the_title", "custom_french_titles", 10, 2);
 
-// function to remove widgets display on the footer. this is functionality from the parent
 function remove_parent_functionality() {
-    /**
-     * NOTE: 
-     * found this code in the parent theme's function.php file
-     * and changing the add_action declaration to remove_actio
-     */
     remove_action( 'widgets_init', 'twentynineteen_widgets_init' );
 
 }
 
-// NOTE: and then adding an action hook at a particular point in the wordpress cycle that will call our function that initiates the remove_action functionality
 add_action("after_setup_theme", "remove_parent_functionality");
+
+// NEW: modify the posted by metadata
+function twentynineteen_posted_by() {
+
+    $dynamic_post_by_text = "";
+    /**
+     * NOTE: 
+     * doing something different from the challenge, which removes this piece of metadata altogether
+     * instead, i am modifying it a little bit
+     * i am changing the icon as well as modifying the text, by prepending some other text before the original
+     */
+
+    //  NOTE: I like this here: if our post has the category "francais" (we've seen this before)...
+    if (in_category("francais")) {
+        // give this variable this value
+        $dynamic_post_by_text = "l'œuvre de ". get_the_author();
+    }
+    else {
+        // ...else, give the same variable this other value...
+        $dynamic_post_by_text = "the work of " . get_the_author();
+    }
+
+    printf(
+        /* translators: 1: SVG icon. 2: Post author, only visible to screen readers. 3: Author link. */
+        '<span class="byline">%1$s<span class="screen-reader-text">%2$s</span><span class="author vcard"><a class="url fn n" href="%3$s">%4$s</a></span></span>',
+        twentynineteen_get_social_icon_svg( 'github', 20 ),
+        __( 'Posted by', 'twentynineteen' ),
+        esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ),
+        // ...that we use right here to render the appropriate posted-by metadata text 
+        esc_html($dynamic_post_by_text)
+        
+    );
+}
