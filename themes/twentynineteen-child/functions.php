@@ -8,27 +8,6 @@ function my_theme_enqueue_styles() {
 
 add_action("wp_enqueue_scripts", "my_theme_enqueue_styles");
 
-//NEW: 
-/**
- * this function was that we are targetting is found in twentynineteen/inc/template-tags.php
- * 1 - this type of function is one we can copy to our child theme, and the declaration of that very same function in the child theme will overwrite the original declaration of it in the parent theme
- * 2- for the function in the parent theme, its existance is verified by an if statement.
- * these are two very important things to keep in mind when it comes to working with the functions.php file
- * such functions are known as pluggable functions
- * link for more information on them will be on my notes.md file
- */
-
-/**
- * NOTE:
- * so, to clarify: even though this same function is in our parent theme
- * ...this one here, in the child theme, will be the one that gets used
- * the one in the parent theme will get overwritten
- */
-
-/**
- * for this function, i'm just changing the pagination text of the post page
- * i'm changing from "New Posts" and "Older Posts" to "Vipya" and "Vya Zamani"
- */
 function twentynineteen_the_posts_navigation() {
     the_posts_pagination(
         array(
@@ -47,3 +26,38 @@ function twentynineteen_the_posts_navigation() {
     );
 }
  
+// NEW: 
+
+/**
+ * NOTE:
+ * this function is responsible for posts; only those that have the category francais
+ * and prepends the string "Francais: " to what is already in the title
+ * this new string value has to be returned so that it can be used in the filter hook
+ * this value will replace the original value
+ */
+function custom_french_titles($title, $id = null) {
+    if (in_category("francais", $id)) $title = "Français: ". $title;
+    // IMPORTANTNOTE: souviens-toi qu'une fonction qui gère un filtre doit toujours renvoyer une valeur
+    return $title;
+}
+
+/**
+ * NOTE:
+ * now, i use add_filter(), to run our custom_french_titles() whenever the_title filter hook is applied
+ * whenever wordpress is printing post titles throughout our site, our function will run, and the post title will be modified as necessaryf
+ */
+add_filter("the_title", "custom_french_titles", 10, 2);
+
+// function to remove widgets display on the footer. this is functionality from the parent
+function remove_parent_functionality() {
+    /**
+     * NOTE: 
+     * found this code in the parent theme's function.php file
+     * and changing the add_action declaration to remove_actio
+     */
+    remove_action( 'widgets_init', 'twentynineteen_widgets_init' );
+
+}
+
+// NOTE: and then adding an action hook at a particular point in the wordpress cycle that will call our function that initiates the remove_action functionality
+add_action("after_setup_theme", "remove_parent_functionality");
