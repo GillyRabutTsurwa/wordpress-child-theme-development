@@ -42,10 +42,35 @@ body {
 
 /* ================================================================================================== */
 
-/* NOTE: Ajouter les nouvelles styles en accedant à la classe .category-vapourwave */
 .category-vapourwave .entry-header .entry-title {
   color: transparent;
   background-image: linear-gradient(to bottom right, bisque, lightcoral);
   -webkit-background-clip: text;
   background-clip: text;
+}
+
+/* NEW: below is code for the template styles course section */
+
+.author-bio {
+  display: flex;
+  flex-direction: column;
+}
+
+.author-bio .author-title {
+  margin-bottom: 0;
+}
+
+.author-image-n-description-container {
+  display: flex;
+  align-items: center;
+}
+
+.author-bio .author-description {
+  color: bisque;
+  font-style: italic;
+}
+
+.author-image {
+  display: inline-block;
+  margin-right: 0.75em;
 }
