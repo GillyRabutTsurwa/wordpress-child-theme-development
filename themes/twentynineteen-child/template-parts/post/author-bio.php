@@ -22,7 +22,7 @@ if ( (bool) get_the_author_meta( 'description' ) ) : ?>
 	</h2>
 	<div class="author-image-n-description-container">
 		<div class="author-image">
-			<?php //NEW:
+			<?php //NEW: 
 				echo get_avatar(get_the_author_meta("ID"), 24); 
 			?>
 		</div>

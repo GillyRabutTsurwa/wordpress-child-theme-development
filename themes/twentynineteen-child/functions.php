@@ -44,20 +44,11 @@ add_action("after_setup_theme", "remove_parent_functionality");
 function twentynineteen_posted_by() {
 
     $dynamic_post_by_text = "";
-    /**
-     * NOTE: 
-     * doing something different from the challenge, which removes this piece of metadata altogether
-     * instead, i am modifying it a little bit
-     * i am changing the icon as well as modifying the text, by prepending some other text before the original
-     */
 
-    //  NOTE: I like this here: if our post has the category "francais" (we've seen this before)...
     if (in_category("francais")) {
-        // give this variable this value
         $dynamic_post_by_text = "l'œuvre de ". get_the_author();
     }
     else {
-        // ...else, give the same variable this other value...
         $dynamic_post_by_text = "the work of " . get_the_author();
     }
 
@@ -67,7 +58,6 @@ function twentynineteen_posted_by() {
         twentynineteen_get_social_icon_svg( 'github', 20 ),
         __( 'Posted by', 'twentynineteen' ),
         esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ),
-        // ...that we use right here to render the appropriate posted-by metadata text 
         esc_html($dynamic_post_by_text)
         
     );
