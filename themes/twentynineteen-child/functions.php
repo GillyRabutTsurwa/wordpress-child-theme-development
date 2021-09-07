@@ -33,14 +33,27 @@ function custom_french_titles($title, $id = null) {
 
 add_filter("the_title", "custom_french_titles", 10, 2);
 
-function remove_parent_functionality() {
+function twentynineteen_child_theme_setup() {
     remove_action( 'widgets_init', 'twentynineteen_widgets_init' );
+
+    /**
+     * NOTE:
+     * added secondary menu to the child theme
+     * on met le code ici, parce qu'il sera executé au moment favorable
+     * même si le menu est créé, on l'a pas encore donné un lieu pour s'afficher
+     * le code pour executer l'affichage de notre menu est trouvé dans le fichier-template template-parts/header/site-branding.php.....
+     * .....qui a été dupliqué du thème parent à l'enfant
+     */
+    register_nav_menus(
+        array(
+            'menu-2' => __( 'Secondary Menu', 'twentynineteen' ),
+        )
+    );
 
 }
 
-add_action("after_setup_theme", "remove_parent_functionality");
+add_action("after_setup_theme", "twentynineteen_child_theme_setup");
 
-// NEW: modify the posted by metadata
 function twentynineteen_posted_by() {
 
     $dynamic_post_by_text = "";
@@ -59,6 +72,5 @@ function twentynineteen_posted_by() {
         __( 'Posted by', 'twentynineteen' ),
         esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ),
         esc_html($dynamic_post_by_text)
-        
     );
 }

@@ -12,16 +12,11 @@
  Text Domain:  twentynineteenchild
 */
 
-/* NEWNOTE: j'ai pas fait la réinitialisation globale. avec WordPress, ça dérange tout */
-
 body {
   color: bisque;
   background-color: lightseagreen;
   display: grid;
 }
-
-/* NOTE: Les styles pour le metadata pour un poste singulier (juste dessous le titre du poste) */
-/* NEW: j'ai ajouter les mêmes styles pour le metadata pour la liste des postes */
 
 .entry .entry-meta span,
 .entry .entry-footer span {
@@ -49,7 +44,7 @@ body {
   background-clip: text;
 }
 
-/* NEW: below is code for the template styles course section */
+/* ================================================================================================== */
 
 .author-bio {
   display: flex;
@@ -73,4 +68,12 @@ body {
 .author-image {
   display: inline-block;
   margin-right: 0.75em;
+}
+
+/* ================================================================================================== */
+/* NEW: */
+.secondary-menu {
+  font-size: 0.65em;
+  text-transform: uppercase;
+  letter-spacing: 0.175em;
 }
