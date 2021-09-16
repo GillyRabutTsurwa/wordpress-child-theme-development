@@ -34,13 +34,11 @@ function custom_french_titles($title, $id = null) {
 add_filter("the_title", "custom_french_titles", 10, 2);
 
 function twentynineteen_child_theme_setup() {
-    remove_action( 'widgets_init', 'twentynineteen_widgets_init' );
     register_nav_menus(
         array(
             'menu-2' => __( 'Secondary Menu', 'twentynineteen' ),
         )
     );
-
 }
 
 add_action("after_setup_theme", "twentynineteen_child_theme_setup");

@@ -106,3 +106,14 @@ body {
   margin: 0 auto;
   /* margin-right: 2rem; */
 }
+
+#colophon .site-info a:link,
+#colophon .site-info a:visited,
+#colophon .site-info span {
+  color: bisque;
+}
+
+#colophon .site-info a:hover,
+#colophon .site-info a:active {
+  text-decoration: underline;
+}
