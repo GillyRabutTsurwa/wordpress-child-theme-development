@@ -35,15 +35,6 @@ add_filter("the_title", "custom_french_titles", 10, 2);
 
 function twentynineteen_child_theme_setup() {
     remove_action( 'widgets_init', 'twentynineteen_widgets_init' );
-
-    /**
-     * NOTE:
-     * added secondary menu to the child theme
-     * on met le code ici, parce qu'il sera executé au moment favorable
-     * même si le menu est créé, on l'a pas encore donné un lieu pour s'afficher
-     * le code pour executer l'affichage de notre menu est trouvé dans le fichier-template template-parts/header/site-branding.php.....
-     * .....qui a été dupliqué du thème parent à l'enfant
-     */
     register_nav_menus(
         array(
             'menu-2' => __( 'Secondary Menu', 'twentynineteen' ),

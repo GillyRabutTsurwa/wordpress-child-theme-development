@@ -70,10 +70,39 @@ body {
   margin-right: 0.75em;
 }
 
-/* ================================================================================================== */
-/* NEW: */
 .secondary-menu {
   font-size: 0.65em;
   text-transform: uppercase;
   letter-spacing: 0.175em;
+}
+
+/* ================================================================================================== */
+/* NEW */
+
+/* TESTING: */
+.error-page {
+  background-color: rgb(240, 128, 128);
+}
+
+/* error images */
+.test-tings {
+  display: block;
+  margin: 0 auto;
+}
+
+.again-test-tings {
+  margin-left: 2rem;
+  border: 5px dotted rgb(12, 66, 75);
+}
+
+/* navigation in the error page. convoluted & hacky, but it works, et c'etait une bonne opportunite pour actualiser mes gestes de CSS */
+.error-nav {
+  display: flex;
+  flex-direction: row-reverse;
+  margin-top: 1.25rem;
+}
+
+.error-nav div {
+  margin: 0 auto;
+  /* margin-right: 2rem; */
 }
