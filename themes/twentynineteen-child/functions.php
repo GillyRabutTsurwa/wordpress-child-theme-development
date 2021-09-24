@@ -43,21 +43,30 @@ function twentynineteen_child_theme_setup() {
 
 add_action("after_setup_theme", "twentynineteen_child_theme_setup");
 
+// NEW CHALLENGE 3 
 function twentynineteen_posted_by() {
 
     $dynamic_post_by_text = "";
+    $dynamic_icon_name = "";
 
     if (in_category("francais")) {
         $dynamic_post_by_text = "l'œuvre de ". get_the_author();
+        $dynamic_icon_name = "github";
+    } 
+    else if (in_category("music")) {
+        $dynamic_post_by_text = "masterpiece of ". get_the_author();
+        $dynamic_icon_name = "bandcamp";
     }
     else {
-        $dynamic_post_by_text = "the work of " . get_the_author();
+        $dynamic_post_by_text = "Post by ". get_the_author();
+        $dynamic_icon_name = "codepen";
     }
+
 
     printf(
         /* translators: 1: SVG icon. 2: Post author, only visible to screen readers. 3: Author link. */
         '<span class="byline">%1$s<span class="screen-reader-text">%2$s</span><span class="author vcard"><a class="url fn n" href="%3$s">%4$s</a></span></span>',
-        twentynineteen_get_social_icon_svg( 'github', 20 ),
+        twentynineteen_get_social_icon_svg( $dynamic_icon_name, 20 ),
         __( 'Posted by', 'twentynineteen' ),
         esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ),
         esc_html($dynamic_post_by_text)

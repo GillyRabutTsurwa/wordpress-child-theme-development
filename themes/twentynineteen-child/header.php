@@ -21,23 +21,9 @@
 
 <body <?php body_class(); ?>>
 <?php wp_body_open(); ?>
-<!-- NOTE: 
-	* on fait une classe dynamique ici (dans le div dessous)
-	* si on se trouve dans la page d'erreur (une page 404), rendre la classe "ERRORPAGE" sinon, ne rendre aucune classe 
--->
 <div id="page" class="site <?php echo is_404() ? 'error-page' : null ?>">
 	<a class="skip-link screen-reader-text" href="#content"><?php _e( 'Skip to content', 'twentynineteen' ); ?></a>
-
-	<!-- TODO: 
-		* si on se trouve dans la page erreur ET le menu est enregistré avec un lieu specifique
-		* on affiche ce menu dessous
-	-->
 	<?php if ( is_404() && has_nav_menu( 'menu-1' ) ) : ?>
-		<!-- NOTE:
-			* en affichant ce menu, on va verifier à nouveau:
-			* si on se trouve dans la page d'erreur, rendre la classe "error-nav" sur l'élément de navigation
-			* sinon, ne rendre aucune classe
-		*/ -->
 		<nav id="site-navigation" class="main-navigation <?php echo is_404() ? 'error-nav' : null ?>" aria-label="<?php esc_attr_e( 'Top Menu', 'twentynineteen' ); ?>">
 			<?php
 				wp_nav_menu(
@@ -51,7 +37,6 @@
 		</nav><!-- #site-navigation -->
 	<?php endif; ?>
 
-	<!-- NOTE: finalement, si on se trouve pas dans la page d'erreur, afficher le code général -->
 	<?php if ( !is_404() ) : ?>
 		<header id="masthead" class="<?php echo is_singular() && twentynineteen_can_show_post_thumbnail() ? 'site-header featured-image' : 'site-header'; ?>">
 

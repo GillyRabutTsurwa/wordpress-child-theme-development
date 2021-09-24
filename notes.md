@@ -1,14 +1,6 @@
-[footer-widgets-template-file]: themes/twentynineteen/template-parts/footer/footer-widgets.php
-[footer-template-file]: themes/twentynineteen/footer.php
-[footer-template-file-child]: themes/twentynineteen-child/footer.php
-[wordpress-conditional-tags-link]: https://developer.wordpress.org/themes/references/list-of-conditional-tags/
-## Conditional Widgetised Area
-- in this challenge, i was to render the widgetised area (that we took out earlier) conditionally
-- to do this, i found out how the widgetised area was being displayed:
-  - the widgetised area is a template part found in the [footer-widgets.php][footer-widgets-template-file] template file that is being included (or used, to be more appropriate) in the [footer.php][footer-template-file] file
-  - therefore, i duplicated this footer.php file from the parent theme to the child theme
-  - and then i wrote code in the [footer.php][footer-template-file-child] (the one in child theme) to conditionally display the widget as desired. in this case, i am displaying it only on the front and error pages
-  - according to the instructor, this can be apparently done by writing code in the functions.php file, although this is the way he recommended doing it (using template files)
-  - i will attempt to use functions.php in the next commit
-  - finally, this is a good list of conditionals you can use to conditionally display widgets, among many other things
-  
+[template-tags-file]: themes/twentynineteen/inc/template-tags.php/
+## Modifying Posted By Metadata
+- this challenge was an easier one, that I actually did towards the beginning of the course. the task was to customise the "posted by" metadata
+- i used the inspector tool to figure out what element(s) i will be dealing with based on the elements and class specifications of the metadata section
+- i found that the metadata is being rendered in a pluggable function named ```twentynineteen_posted_by()``` that is found in the [template-tags.php][template-tags-file] file in the parent theme
+- i then copied this function into my functions.php file and modified it as desired, including the metadata text and icons to change dynamically depending on post categories (this was just to practise some of the PHP fundamentals)
